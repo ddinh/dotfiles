@@ -1,0 +1,4 @@
+#alias ls="exa -1 -s ext"
+#alias ll="exa -l -a -s ext"
+alias @="source ~/.zshrc"
+alias d="trash"

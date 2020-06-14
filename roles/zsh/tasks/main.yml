@@ -1,0 +1,36 @@
+---
+- name: Install zsh
+  become: true
+  apt: 
+    name: zsh
+    state: present
+
+- name: Change shell to zsh
+  shell: sudo chsh $USER -s $(which zsh)
+
+- name: Install pure prompt
+  git:
+    repo: https://github.com/sindresorhus/pure.git
+    dest: $HOME/.zsh/pure
+
+- name: Install zsh-autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: $HOME/.zsh/zsh-autosuggestions
+
+- name: Install zsh-syntax-highlighting
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: $HOME/.zsh/zsh-syntax-highlighting
+
+- name: Link aliases
+  file:
+    src: "{{ role_path }}/files/aliases"
+    dest: $HOME/.aliases
+    state: link
+
+- name: Link zshrc
+  file:
+    src: "{{ role_path }}/files/zshrc"
+    dest: $HOME/.zshrc
+    state: link
