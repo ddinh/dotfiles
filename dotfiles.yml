@@ -1,5 +1,6 @@
 ---
 - hosts: dotfiles
   roles:
-    - zsh
-    - brew
+    - {role: 'zsh', tags: 'zsh'}
+    - {role: 'brew', tags: 'brew'}
+    - {role: 'ssh', tags: 'ssh'}
