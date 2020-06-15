@@ -21,7 +21,3 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # Install and configure dotfiles
 ansible-playbook -i ~/dotfiles/hosts ~/dotfiles/dotfiles.yml
-
-# Git configuration
-git config --global user.name didnh
-git config --global user.email ddinh@users.noreply.github.com
