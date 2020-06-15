@@ -1,0 +1,4 @@
+---
+- name: Generate an OpenSSH Keypair
+  openssh_keypair:
+    path: $HOME/.ssh/id_rsa
