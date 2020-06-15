@@ -2,3 +2,4 @@
 - hosts: dotfiles
   roles:
     - zsh
+    - brew
