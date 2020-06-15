@@ -1,4 +1,10 @@
-#alias ls="exa -1 -s ext"
-#alias ll="exa -l -a -s ext"
 alias @="source ~/.zshrc"
-alias d="trash"
+alias del="trash"
+
+ls() {
+  if [[ $# -eq 0 ]] ; then
+    exa -1 -s ext
+  else
+    exa "$@"
+  fi
+}
