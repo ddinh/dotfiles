@@ -1,0 +1,32 @@
+---
+- name: Add emacs apt repository
+  become: true
+  apt_repository:
+    repo: ppa:kelleyk/emacs
+    state: present
+
+- name: Install emacs
+  become: true
+  apt:
+    name: emacs26
+    state: present
+
+- name: Clone spacemacs
+  git:
+    repo: https://github.com/syl20bnr/spacemacs 
+    dest: $HOME/.emacs.d
+    version: develop
+
+- name: Link spacemacs config
+  file: 
+    src: "{{ role_path }}/files/spacemacs.d"
+    dest: $HOME/.spacemacs.d
+    state: link
+
+- name: Install Hack font
+  copy:
+    src: "{{ role_path }}/files/Hack-Regular.ttf"
+    dest: $HOME/.local/share/fonts/
+
+- name: Regenerate font cache
+  shell: fc-cache -f -v

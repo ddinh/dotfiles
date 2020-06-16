@@ -1,0 +1,1 @@
+/home/ia/.spacemacs.d
