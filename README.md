@@ -9,11 +9,13 @@ My dotfiles configured using [Ansible](https://docs.ansible.com/ansible/latest/i
 ```
 
 # configuration
+- user
 - zsh
 - ssh
 - git 
 - brew
 - vim
+- emacs
 
 # requirements
 

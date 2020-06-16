@@ -20,4 +20,4 @@ source <(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/in
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # Install and configure dotfiles
-ansible-playbook -i ~/dotfiles/hosts ~/dotfiles/dotfiles.yml
+ansible-playbook --ask-become-pass -i ~/dotfiles/hosts ~/dotfiles/dotfiles.yml

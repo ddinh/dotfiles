@@ -2,6 +2,7 @@
 - hosts: dotfiles
   roles:
     - {role: 'zsh', tags: 'zsh'}
+    - {role: 'user', tags: 'user'}
     - {role: 'brew', tags: 'brew'}
     - {role: 'ssh', tags: 'ssh'}
     - {role: 'git', tags: 'git'}
