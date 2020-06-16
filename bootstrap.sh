@@ -1,15 +1,11 @@
 #!/bin/bash
 
-# Install ansible
+# Install packages
 sudo apt update
-sudo apt install software-properties-common
-sudo apt-add-repository --yes --update ppa:ansible/ansible
-sudo apt install -y ansible build-essential
+sudo apt install -y git software-properties-common build-essential apt-transport-https python3-pip 
 
-# Install git if needed
-if ! [ -x "$(command -v git)" ]; then
-	sudo apt install -y git
-fi
+# Install ansible
+pip3 install ansible
 
 # Clone the dotfiles repo
 git clone git@github.com:ddinh/dotfiles.git ~/dotfiles
