@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias @="source ~/.zshrc"
 alias del="trash"
 
@@ -6,5 +8,14 @@ ls() {
     exa -1 -s ext
   else
     exa "$@"
+  fi
+}
+
+em() {
+  if [ -x "$(command -v autohotkey.exe)" ]; then
+    emacsclient -n $@
+    powershell.exe -c "echo '$(cat ~/dotfiles/roles/emacs/files/focus.ahk)' | autohotkey.exe *"
+  else
+    emacsclient -n $@;
   fi
 }
