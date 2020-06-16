@@ -5,8 +5,15 @@
     name: zsh
     state: present
 
+- name: Run whoami without become.
+  command: whoami
+  changed_when: false
+  become: false
+  register: whoami
+
 - name: Change shell to zsh
-  shell: sudo chsh $USER -s $(which zsh)
+  become: true
+  shell: "chsh {{ whoami.stdout }} -s $(which zsh)"
 
 - name: Install pure prompt
   git:
