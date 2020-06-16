@@ -2,6 +2,7 @@
 
 alias @="source ~/.zshrc"
 alias del="trash"
+alias grep="grep --color"
 
 ls() {
   if [[ $# -eq 0 ]] ; then
