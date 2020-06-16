@@ -1,0 +1,27 @@
+colorscheme Tomorrow-Night      "~/.vim/colors
+syntax enable                   " enable syntax processing
+filetype indent on              " load filetype-specific indent files
+
+set tabstop=2           	" number of visual spaces per TAB
+set shiftwidth=2        	" number of spaces for autoindents
+set softtabstop=2       	" number of spaces in tab when editing
+set expandtab           	" tabs are spaces
+set number              	" show line numbers
+set relativenumber      	" relative line numbers
+set showcmd             	" show command in bottom bar
+set wildmenu                    " visual autocomplete for command menu
+set lazyredraw                  " redraw only when we need to.
+set showmatch                   " highlight matching [{()}]
+set incsearch                   " search as characters are entered
+set hlsearch                    " highlight matches
+
+let mapleader=" "               " leader key is space
+
+nnoremap <C-s>                  :w!<CR>
+nnoremap <leader><tab>          :e#<CR>
+nnoremap <silent> <leader>wl    :wincmd l<CR>
+nnoremap <silent> <leader>wh    :wincmd h<CR>
+nnoremap <CR>                   :noh<CR><CR>
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>

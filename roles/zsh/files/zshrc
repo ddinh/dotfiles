@@ -46,3 +46,5 @@ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
+
+stty -ixon

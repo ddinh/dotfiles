@@ -5,3 +5,4 @@
     - {role: 'brew', tags: 'brew'}
     - {role: 'ssh', tags: 'ssh'}
     - {role: 'git', tags: 'git'}
+    - {role: 'vim', tags: 'vim'}

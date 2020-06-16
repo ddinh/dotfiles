@@ -13,6 +13,7 @@ My dotfiles configured using [Ansible](https://docs.ansible.com/ansible/latest/i
 - ssh
 - git 
 - brew
+- vim
 
 # requirements
 

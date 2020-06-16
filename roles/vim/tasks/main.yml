@@ -1,0 +1,11 @@
+---
+- name: Link vimrc
+  file:
+    src: "{{ role_path }}/files/vimrc"
+    dest: $HOME/.vimrc
+    state: link
+
+- name: Link theme
+  copy:
+    src: "{{ role_path }}/files/Tomorrow-Night.vim"
+    dest: $HOME/.vim/colors/
