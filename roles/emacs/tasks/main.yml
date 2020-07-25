@@ -11,17 +11,20 @@
     name: emacs26
     state: present
 
-- name: Clone spacemacs
+- name: Clone doom emacs
   git:
-    repo: https://github.com/syl20bnr/spacemacs 
+    repo: https://github.com/hlissner/doom-emacs
+    depth: 1
     dest: $HOME/.emacs.d
-    version: develop
 
-- name: Link spacemacs config
+- name: Link doom config
   file: 
-    src: "{{ role_path }}/files/spacemacs.d"
-    dest: $HOME/.spacemacs.d
+    src: "{{ role_path }}/files/doom.d"
+    dest: $HOME/.doom.d
     state: link
+
+- name: Install doom
+  command: ~/.emacs.d/bin/doom install
 
 - name: Install Hack font
   copy:
