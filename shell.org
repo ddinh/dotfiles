@@ -1,0 +1,18 @@
+#+TITLE: Shell configuration
+
+* Fish
+** Link configuration
+#+begin_src shell
+stow fish
+#+end_src
+
+** Install
+#+begin_src fish
+brew install fish
+#+end_src
+
+** Change default shell
+#+begin_src shell
+echo $(which fish) | sudo tee -a /etc/shells
+sudo chsh -s $(which fish)
+#+end_src
