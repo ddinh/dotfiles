@@ -30,7 +30,8 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(csv
+   '(autohotkey
+     csv
      yaml
      typescript
      vinegar
@@ -157,7 +158,7 @@ values."
    dotspacemacs-emacs-leader-key "M-m"
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
-   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-major-mode-leader-key nil
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
    ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
@@ -417,24 +418,34 @@ you should place your code here."
     (evil-goto-line)
     (other-window 1))
 
-  (spacemacs/set-leader-keys "ec" 'clojure-send-form-to-repl)
-  (spacemacs/set-leader-keys "eb" 'cider-load-buffer)
-  (spacemacs/set-leader-keys "ef" 'spacemacs/cider-send-function-to-repl)
+  ;; (spacemacs/set-leader-keys "ec" 'clojure-send-form-to-repl)
+  ;; (spacemacs/set-leader-keys "eb" 'cider-load-buffer)
+  ;; (spacemacs/set-leader-keys "ef" 'spacemacs/cider-send-function-to-repl)
 
-  (spacemacs/set-leader-keys-for-major-mode 'cider-mode "r" 'cider-switch-to-repl-buffer)
-  (evil-define-key 'normal cider-mode-map ",r" 'cider-switch-to-repl-buffer)
+  (spacemacs/set-leader-keys "ec" nil)
+  ;; (evil-define-key 'normal cider-mode-map "eb" 'cider-load-buffer)
+  ;; (evil-define-key 'normal cider-mode-map "ef" 'spacemacs/cider-send-function-to-repl)
+  ;; (evil-define-key 'normal cider-mode-map " r" 'cider-switch-to-repl-buffer)
+  (evil-define-key 'normal cider-mode-map "ec" 'clojure-send-form-to-repl)
+  (evil-define-key 'normal clojure-mode-map " '" 'cider-connect-clj)
+  (evil-define-key 'normal clojurescript-mode-map " '" 'cider-connect-cljs)
 
   (evil-define-key 'normal cider-mode-map "gh" 'cider-doc)
+  (evil-define-key 'normal cider-mode-map "ec" 'clojure-send-form-to-repl)
+  (evil-define-key 'hybrid cider-mode-map (kbd "M-(") 'sp-wrap-round)
+  (evil-define-key 'hybrid cider-mode-map (kbd "M-{") 'sp-wrap-curly)
+  (evil-define-key 'hybrid cider-mode-map (kbd "M-[") 'sp-wrap-square)
+  (evil-define-key 'hybrid cider-mode-map (kbd "C-(") 'sp-slurp-hybrid-sexp)
 
   (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-mode "ec" 'ein:worksheet-execute-cell)
   (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-mode "ed" 'ein:worksheet-delete-cell)
   (spacemacs/set-leader-keys-for-major-mode 'ein:notebook-mode "o" 'ein:worksheet-insert-cell-below)
   (evil-define-key 'normal ein:notebook-mode-map (kbd "C-s") 'ein:notebook-save-notebook-command)
 
-  (spacemacs/set-leader-keys-for-major-mode 'cider-repl-mode "r" 'cider-switch-to-last-clojure-buffer)
+  (setq-default helm-completion-style 'emacs)
+  (setq-default tab-always-indent t)
 
-  (setq helm-completion-style 'emacs)
-  (setq tab-always-indent t)
+  (blink-cursor-mode)
 
   (spaceline-compile))
 

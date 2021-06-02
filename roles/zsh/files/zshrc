@@ -1,8 +1,8 @@
 # Set up the prompt
 
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
+# fpath+=$HOME/.zsh/pure
+# autoload -U promptinit; promptinit
+# prompt pure
 
 setopt histignorealldups sharehistory
 
@@ -58,3 +58,27 @@ _fix_cursor() {
 }
 
 precmd_functions+=(_fix_cursor)
+
+function chpwd() {
+    emulate -L zsh
+    ls -a
+}
+
+export PATH="$DOTNET_ROOT:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export FrameworkPathOverride=$(dirname $(which mono))/../lib/mono/4.7.1-api/
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
+# Fix WSL2 interop for vterm
+for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
+    if [[ -e "/run/WSL/${i}_interop" ]]; then
+        export WSL_INTEROP=/run/WSL/${i}_interop
+    fi
+done
+
+# ~/.zshrc
+
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"

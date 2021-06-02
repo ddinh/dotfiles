@@ -3,6 +3,9 @@
 alias @="source ~/.zshrc"
 alias del="trash"
 alias grep="grep --color"
+alias em="TERM=xterm-24bit emacs -nw"
+alias dc="docker"
+alias dcc="docker-compose"
 
 ls() {
   if [[ $# -eq 0 ]] ; then
@@ -12,11 +15,3 @@ ls() {
   fi
 }
 
-em() {
-  if [ -x "$(command -v autohotkey.exe)" ]; then
-    emacsclient -n $@
-    powershell.exe -c "echo '$(cat ~/dotfiles/roles/emacs/files/focus.ahk)' | autohotkey.exe *"
-  else
-    emacsclient -n $@;
-  fi
-}
