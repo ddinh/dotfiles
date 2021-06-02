@@ -16,3 +16,9 @@ brew install fish
 echo $(which fish) | sudo tee -a /etc/shells
 sudo chsh -s $(which fish)
 #+end_src
+
+* Prompt
+** Install starship
+#+begin_src shell
+brew install sharship
+#+end_src
